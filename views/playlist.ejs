@@ -13,9 +13,17 @@
     <div id="content">
       <h1>Your playlist</h1>
       <ul>
-        <li><a href="/delete-title"><img class="picto" src="/images/remove.svg"> Wannabe - Spice Girls - 1996</a></li>
-        <li><a href="/delete-title"><img class="picto" src="/images/remove.svg"> Thriller - Michael Jackson - 1983</a></li>
-      
+        <% if(myPlaylist.length != 0 ){ for(i=0; i < myPlaylist.length; i++ ) { %>
+        <li>
+          <a href="/delete-title">
+            <input type="hidden" value="<%= i %>" name="position">
+            <img class="picto" src="/images/remove.svg">
+            <%= myPlaylist[i].title %> - <%= myPlaylist[i].artist %> - <%= myPlaylist[i].year %>
+          </a>
+        </li>
+        <% }} else { %>
+        <p>Vous n'avez pas encore de titre dans votre playlist</p>
+          <% } %>
       </ul>
     </div>
   </body>
